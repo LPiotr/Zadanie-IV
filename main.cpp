@@ -60,6 +60,8 @@ int main(int argc, char * argv[])
 
                 createFile1("test3_file1.bin", 400000000, 0x55);
                 createFile1("test3_file2.bin", 400000000, 0x50);
+                results = calculateBer("test2_file1.bin", "test2_file2.bin");
+                printResult(results);
                 break;
             }
 
