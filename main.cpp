@@ -26,41 +26,51 @@ int main(int argc, char * argv[])
         saveLog("User did not provide path to the files.");
         saveLog("Creating the test files for user...");
         //test 1
+        bool repeat = true;
 
-        int choose;
-        std::cin >> choose;
+        
+        while (repeat)
+        {
+            std::cout << "Wybierz opje testu \n1. Test numer 1 \n2. Test numer 2 \n3. Test numer 3 \nOpcja 4. Wyjscie "<<std::endl;
+            int choose;
+            std::cin >> choose;
+            switch (choose) {
+                //test 1 tworzymy identyczne pliki z 0x55 
 
-        switch (choose) {
-            //test 1
-        case 1:
-        {
-            createFile1("test1_file1.bin", 100, 0x55); //1111 1111
-            createFile1("test1_file2.bin", 100, 0x55); //1111 1111
-            results = calculateBer("test1_file1.bin", "test1_file2.bin");
-            printResult(results);
-            break;
-        }
-            //test 2
-        case 2:
-        {
-            createFile1("test2_file1.bin", 100, 0x55); //1111 1111
-            createFile1("test2_file2.bin", 100, 0x55); //1111 1111
-            results = calculateBer("test2_file1.bin", "test2_file2.bin");
-            printResult(results);
-            break;
-        }
+            case 1:
+            {
+                createFile1("test1_file1.bin", 100, 0x55); 
+                createFile1("test1_file2.bin", 100, 0x55); 
+                results = calculateBer("test1_file1.bin", "test1_file2.bin");
+                printResult(results);
+                break;
+            }
+            //test 2 pliki rozniace sie o 10 bajtami
+            case 2:
+            {
+                createFile1("test2_file1.bin", 100, 0xFF); 
+                createFile1("test2_file2.bin", 100, 0xFE); 
+                results = calculateBer("test2_file1.bin", "test2_file2.bin");
+                printResult(results);
+                break;
+            }
             //test3
-        case 3:
-        {
-            
-            createFile1("test3_file1.bin",409600000,0x55);
-            createFile1("test3_file2.bin",409600000,0x50);
-            break;
-        }
-        }
+            case 3:
+            {
 
+                createFile1("test3_file1.bin", 409600000, 0x55);
+                createFile1("test3_file2.bin", 409600000, 0x50);
+                break;
+            }
+
+            case 4:
+            {
+                repeat = false;
+                break;
+            }
+            }
+        }
        
-
         saveLog("Test files are prepared");
         saveLog("Re-run with correct arguments ie: ./task_iv_ber.exe test1_file1.bin test1_file2.bin");
     }
