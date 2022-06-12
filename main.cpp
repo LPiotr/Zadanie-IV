@@ -31,7 +31,7 @@ int main(int argc, char * argv[])
         
         while (repeat)
         {
-            std::cout << "Wybierz opje testu \n1. Test numer 1 \n2. Test numer 2 \n3. Test numer 3 \nOpcja 4. Wyjscie "<<std::endl;
+            std::cout << "Wybierz opje testu \n\n1. Test numer 1 \n2. Test numer 2 \n3. Test numer 3 \n\n4. Wyjscie "<<std::endl;
             int choose;
             std::cin >> choose;
             switch (choose) {
@@ -58,8 +58,8 @@ int main(int argc, char * argv[])
             case 3:
             {
 
-                createFile1("test3_file1.bin", 409600000, 0x55);
-                createFile1("test3_file2.bin", 409600000, 0x50);
+                createFile1("test3_file1.bin", 400000000, 0x55);
+                createFile1("test3_file2.bin", 400000000, 0x50);
                 break;
             }
 
