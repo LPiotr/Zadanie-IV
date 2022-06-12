@@ -361,5 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/test1_file1.bin
+/test1_file2.bin
+
+/test2_file1.bin
+/test2_file2.bin
+
 /test3_file1.bin
 /test3_file2.bin
