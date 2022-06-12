@@ -14,11 +14,11 @@ void createFile1(const std::string name, const int count, const char value);
 berResults calculateBer(std::string fpath1, std::string fpath2);
 void printResult(berResults results);
 
-int main(int argc, char * argv[])
+int main(int argc, char* argv[])
 {
     std::string fpath1; //path to file 1
     std::string fpath2; //path to file 2
-    berResults results; 
+    berResults results;
 
     openLog("log.log"); //create log.log file for logging purposes
     if (argc != 3) //check the number of arguments
@@ -26,17 +26,37 @@ int main(int argc, char * argv[])
         saveLog("User did not provide path to the files.");
         saveLog("Creating the test files for user...");
         //test 1
-        createFile1("test1_file1.bin", 100, 0xFF); //1111 1111
-        createFile1("test1_file2.bin", 100, 0xFE); //1111 1110
-        //test 2
-        
-        /*
-            missing function to change 10 bits in the file
-        */
 
-        //test 3
-        //createFile1("test3_file1.bin",400000000,0x55); 
-        //createFile1("test3_file2.bin",400000000,0x50);
+        int chose;
+        std::cin >> chose;
+
+        switch (chose) {
+            //test 1
+        case 1:
+        {
+            createFile1("test1_file1.bin", 100, 0x55); //1111 1111
+            createFile1("test1_file2.bin", 100, 0x55); //1111 1111
+            break;
+        }
+        //test 2
+        case 2:
+        {
+            createFile1("test1_file1.bin", 100, 0x55); //1111 1111
+            createFile1("test1_file2.bin", 100, 0x55); //1111 1111
+            break;
+        }
+        //test3
+        case 3:
+        {
+
+            createFile1("test3_file1.bin", 409600000, 0x55);
+            createFile1("test3_file2.bin", 409600000, 0x50);
+            break;
+        }
+        }
+
+
+
         saveLog("Test files are prepared");
         saveLog("Re-run with correct arguments ie: ./task_iv_ber.exe test1_file1.bin test1_file2.bin");
     }
@@ -66,16 +86,18 @@ uint8_t hammingDistance(uint8_t n1, uint8_t n2)
     return setBits;
 }
 
+
 void createFile1(const std::string name, const int count, const char value)
 {
     std::fstream f;
     f.open(name.c_str(), std::ios::binary | std::ios::out);
     for (int i = 0; i < count; i++)
     {
-        f.write((char*)&value,1);
+        f.write((char*)&value, 1);
     }
     f.close();
 }
+
 
 berResults calculateBer(std::string fpath1, std::string fpath2)
 {
@@ -106,7 +128,7 @@ berResults calculateBer(std::string fpath1, std::string fpath2)
     }
 
     results.ber = (float)results.err / results.tot; // calculate ber
-    results.t2 = clock(); 
+    results.t2 = clock();
     saveLog("BER calculations are done");
     return results; //return structure with all results
 }
