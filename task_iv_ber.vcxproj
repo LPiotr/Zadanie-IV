@@ -110,6 +110,7 @@
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Źródło.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

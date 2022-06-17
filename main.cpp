@@ -41,6 +41,7 @@ int main(int argc, char * argv[])
             {
                 createFile1("test1_file1.bin", 100, 0x55); 
                 createFile1("test1_file2.bin", 100, 0x55); 
+                //test BER (bit error rate)
                 results = calculateBer("test1_file1.bin", "test1_file2.bin");
                 printResult(results);
                 break;
